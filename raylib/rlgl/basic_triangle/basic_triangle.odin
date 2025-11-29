@@ -75,27 +75,27 @@ main :: proc() {
 		// Draw triangle
 		rlgl.Begin(render_mode)
 		switch render_mode {
-			case rlgl.TRIANGLES:
-				for position, i in vertex_positions {
-					color := vertex_colors[i]
-					rlgl.Color4ub(color.r, color.g, color.b, color.a)
-					rlgl.Vertex2f(position.x, position.y)
-				}
-
-			case rlgl.LINES:
-				for position, i in vertex_positions {
-					color := vertex_colors[i]
-					rlgl.Color4ub(color.r, color.g, color.b, color.a)
-					if i != 0 {
-						rlgl.Vertex2f(position.x, position.y)
-					}
-					rlgl.Vertex2f(position.x, position.y)
-				}
-
-				color := vertex_colors[0]
-				position := vertex_positions[0]
+		case rlgl.TRIANGLES:
+			for position, i in vertex_positions {
+				color := vertex_colors[i]
 				rlgl.Color4ub(color.r, color.g, color.b, color.a)
 				rlgl.Vertex2f(position.x, position.y)
+			}
+
+		case rlgl.LINES:
+			for position, i in vertex_positions {
+				color := vertex_colors[i]
+				rlgl.Color4ub(color.r, color.g, color.b, color.a)
+				if i != 0 {
+					rlgl.Vertex2f(position.x, position.y)
+				}
+				rlgl.Vertex2f(position.x, position.y)
+			}
+
+			color := vertex_colors[0]
+			position := vertex_positions[0]
+			rlgl.Color4ub(color.r, color.g, color.b, color.a)
+			rlgl.Vertex2f(position.x, position.y)
 		}
 		rlgl.End()
 
